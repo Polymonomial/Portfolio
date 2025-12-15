@@ -16,13 +16,15 @@ document.querySelectorAll('nav a').forEach(anchor => {
 
 // CTA button functionality
 const ctaButton = document.getElementById('cta-button');
-ctaButton.addEventListener('click', () => {
-    const projectsSection = document.getElementById('projects');
-    projectsSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+if (ctaButton) {
+    ctaButton.addEventListener('click', () => {
+        const projectsSection = document.getElementById('projects');
+        projectsSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
     });
-});
+}
 
 // Contact form submission
 const contactForm = document.getElementById('contact-form');

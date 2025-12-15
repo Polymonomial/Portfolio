@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
   filePath = path.join(PUBLIC_DIR, filePath);
 
   // Prevent path traversal attacks
-  const normalizedPath = path.normalize(filePath);
+  const normalizedPath = path.resolve(filePath);
   if (!normalizedPath.startsWith(PUBLIC_DIR)) {
     res.writeHead(403, { 'Content-Type': 'text/html' });
     res.end('<h1>403 - Forbidden</h1>', 'utf-8');
@@ -43,7 +43,7 @@ const server = http.createServer((req, res) => {
       }
     } else {
       res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content, 'utf-8');
+      res.end(content);
     }
   });
 });
