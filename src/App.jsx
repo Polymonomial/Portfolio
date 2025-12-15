@@ -30,7 +30,7 @@ function App() {
           <h2 className="section-title">About Me</h2>
           <div className="about-content">
             <p>
-              I'm a passionate software developer focused on creating innovative solutions 
+              I&apos;m a passionate software developer focused on creating innovative solutions 
               and continuously learning new technologies. This portfolio showcases my journey 
               in software development, including various projects and experiments.
             </p>
