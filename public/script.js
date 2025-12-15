@@ -19,10 +19,12 @@ const ctaButton = document.getElementById('cta-button');
 if (ctaButton) {
     ctaButton.addEventListener('click', () => {
         const projectsSection = document.getElementById('projects');
-        projectsSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        if (projectsSection) {
+            projectsSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 }
 
@@ -30,25 +32,27 @@ if (ctaButton) {
 const contactForm = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // Simulate form submission (in a real app, you'd send this to a server)
-    formMessage.textContent = `Thank you, ${name}! Your message has been received.`;
-    formMessage.style.color = '#667eea';
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Clear message after 5 seconds
-    setTimeout(() => {
-        formMessage.textContent = '';
-    }, 5000);
-});
+if (contactForm && formMessage) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Simulate form submission (in a real app, you'd send this to a server)
+        formMessage.textContent = `Thank you, ${name}! Your message has been received.`;
+        formMessage.style.color = '#667eea';
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Clear message after 5 seconds
+        setTimeout(() => {
+            formMessage.textContent = '';
+        }, 5000);
+    });
+}
 
 // Add animation to project cards on scroll
 const observerOptions = {
