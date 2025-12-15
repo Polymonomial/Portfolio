@@ -3,13 +3,18 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
+const PUBLIC_DIR = path.join(__dirname, 'public');
 
 const server = http.createServer((req, res) => {
-  let filePath = '.' + req.url;
-  if (filePath === './') {
-    filePath = './public/index.html';
-  } else {
-    filePath = './public' + req.url;
+  let filePath = req.url === '/' ? 'index.html' : req.url;
+  filePath = path.join(PUBLIC_DIR, filePath);
+
+  // Prevent path traversal attacks
+  const normalizedPath = path.normalize(filePath);
+  if (!normalizedPath.startsWith(PUBLIC_DIR)) {
+    res.writeHead(403, { 'Content-Type': 'text/html' });
+    res.end('<h1>403 - Forbidden</h1>', 'utf-8');
+    return;
   }
 
   const extname = String(path.extname(filePath)).toLowerCase();
@@ -19,7 +24,7 @@ const server = http.createServer((req, res) => {
     '.js': 'text/javascript',
     '.json': 'application/json',
     '.png': 'image/png',
-    '.jpg': 'image/jpg',
+    '.jpg': 'image/jpeg',
     '.gif': 'image/gif',
     '.svg': 'image/svg+xml',
     '.ico': 'image/x-icon'
@@ -33,8 +38,8 @@ const server = http.createServer((req, res) => {
         res.writeHead(404, { 'Content-Type': 'text/html' });
         res.end('<h1>404 - Page Not Found</h1>', 'utf-8');
       } else {
-        res.writeHead(500);
-        res.end('Sorry, check with the site admin for error: ' + error.code + ' ..\n');
+        res.writeHead(500, { 'Content-Type': 'text/html' });
+        res.end('<h1>500 - Internal Server Error</h1>', 'utf-8');
       }
     } else {
       res.writeHead(200, { 'Content-Type': contentType });
