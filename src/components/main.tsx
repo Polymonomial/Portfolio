@@ -1,8 +1,14 @@
-import Header from "./header/header";
-
+import Frame from "./frame";
+import Header from "./headerfooter/header";
+import Footer from "./headerfooter/footer";
+import "../index.css"
 function Main() {
   return (
-    <Header/>
+    <>
+      <Header />
+      <Frame />
+      <Footer />
+    </>
     
   );
 }
