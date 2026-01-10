@@ -2,6 +2,7 @@ import  Header  from './headerfooter/header'
 import { Routes,Route } from 'react-router-dom'
 import Frontpage from './frontpage/frontpage'
 import About from './about/about'
+import Projects from './projects/projects'
 
 // import { About } from './about'
 // import { Projects } from './projects'
@@ -12,7 +13,7 @@ function Frame() {
             <div className="w-full">
                 <section id="home" className="h-full"><Frontpage /></section>
                 <section id="about" className="h-full"><About /></section>
-                <section id="projects"></section>
+                <section id="projects" className="h-full"><Projects /></section>
             </div>
         </div>
     )
