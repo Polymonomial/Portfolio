@@ -1,5 +1,4 @@
-import  Header  from './headerfooter/header'
-import { Routes,Route } from 'react-router-dom'
+
 import Frontpage from './frontpage/frontpage'
 import About from './about/about'
 import Projects from './projects/projects'
