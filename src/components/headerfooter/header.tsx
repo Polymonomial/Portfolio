@@ -7,7 +7,6 @@ function Header() {
             <nav className="flex space-x-6">
                 <a href="#about" className="hover:text-gray-600 transition-colors text-neutral-50">About</a>
                 <a href="#projects" className="hover:text-gray-600 transition-colors text-neutral-50">Projects</a>
-                <a href="#contact" className="hover:text-gray-600 transition-colors text-neutral-50">Contact</a>
             </nav>
         </header>
     )
